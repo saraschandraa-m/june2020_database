@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/et_patient_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Enter Patient Name" />
+
+
+    <EditText
+        android:id="@+id/et_patient_age"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="number"
+        android:hint="Enter Patient Age" />
+
+
+    <EditText
+        android:id="@+id/et_patient_blood"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Enter Patient Blood Group" />
+
+
+    <EditText
+        android:id="@+id/et_patient_gender"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Enter Patient Gender" />
+
+
+    <EditText
+        android:id="@+id/et_patient_height"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Enter Patient Height" />
+
+    <EditText
+        android:id="@+id/et_patient_weigth"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Enter Patient Weight" />
+
+    <EditText
+        android:id="@+id/et_appointment_date"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Enter Appointment Date" />
+
+
+    <Button
+        android:id="@+id/btn_add_patient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter patient details" />
+
+
+</LinearLayout>
