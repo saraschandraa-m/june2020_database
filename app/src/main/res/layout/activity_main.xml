@@ -12,6 +12,7 @@
         android:id="@+id/et_patient_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:textSize="12sp"
         android:hint="Enter Patient Name" />
 
 
@@ -19,14 +20,16 @@
         android:id="@+id/et_patient_age"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:inputType="number"
-        android:hint="Enter Patient Age" />
+        android:textSize="12sp"
+        android:hint="Enter Patient Age"
+        android:inputType="number" />
 
 
     <EditText
         android:id="@+id/et_patient_blood"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:textSize="12sp"
         android:hint="Enter Patient Blood Group" />
 
 
@@ -34,6 +37,7 @@
         android:id="@+id/et_patient_gender"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:textSize="12sp"
         android:hint="Enter Patient Gender" />
 
 
@@ -41,18 +45,22 @@
         android:id="@+id/et_patient_height"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:textSize="12sp"
         android:hint="Enter Patient Height" />
 
     <EditText
         android:id="@+id/et_patient_weigth"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:textSize="12sp"
         android:hint="Enter Patient Weight" />
 
-    <EditText
+    <TextView
         android:id="@+id/et_appointment_date"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:textSize="12sp"
         android:hint="Enter Appointment Date" />
 
 
@@ -61,6 +69,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter patient details" />
+
+
+    <Button
+        android:id="@+id/btn_get_patient_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

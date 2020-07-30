@@ -16,6 +16,7 @@ public class Patient {
 //    }
 
 
+    private int patientID;
     private String patientName;
     private String patientAge;
     private String patientBloodGroup;
@@ -79,5 +80,13 @@ public class Patient {
 
     public void setAppointmentDate(String appointmentDate) {
         this.appointmentDate = appointmentDate;
+    }
+
+    public int getPatientID() {
+        return patientID;
+    }
+
+    public void setPatientID(int patientID) {
+        this.patientID = patientID;
     }
 }
