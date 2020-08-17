@@ -2,6 +2,7 @@ package com.appstone.database;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -32,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
 
     private DBHelper dbHelper;
 
+    private int patientID;
+
+    private boolean isUpdate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +51,22 @@ public class MainActivity extends AppCompatActivity {
         mEtPatientAppointmentDate = findViewById(R.id.et_appointment_date);
 
         dbHelper = new DBHelper(MainActivity.this);
+
+        Bundle data = getIntent().getExtras();
+        if (data != null) {
+            Patient patient = (Patient) data.getSerializable("PATIENT");
+            isUpdate = true;
+
+            mEtPatientName.setText(patient.getPatientName());
+            mEtPatientAge.setText(patient.getPatientAge());
+            mEtPatientGender.setText(patient.getPatientGender());
+            mEtPatientBloodGroup.setText(patient.getPatientBloodGroup());
+            mEtPatientHeight.setText(patient.getPatientHeight());
+            mEtPatientWeight.setText(patient.getPatientWeight());
+            mEtPatientAppointmentDate.setText(patient.getAppointmentDate());
+
+            patientID = patient.getPatientID();
+        }
 
 
         Button btnPatientAction = findViewById(R.id.btn_add_patient);
@@ -71,8 +92,14 @@ public class MainActivity extends AppCompatActivity {
                 patient.setPatientHeight(patientHeight);
                 patient.setPatientWeight(patientWeight);
                 patient.setAppointmentDate(patientAppointDate);
-
-                dbHelper.insertDataToDatabase(dbHelper.getWritableDatabase(), patient);
+                if (isUpdate) {
+                    patient.setPatientID(patientID);
+                    dbHelper.updateDataToDatabase(dbHelper.getWritableDatabase(), patient);
+                    setResult(Activity.RESULT_OK);
+                    finish();
+                } else {
+                    dbHelper.insertDataToDatabase(dbHelper.getWritableDatabase(), patient);
+                }
 
                 mEtPatientName.setText("");
                 mEtPatientAge.setText("");

@@ -1,6 +1,8 @@
 package com.appstone.database;
 
-public class Patient {
+import java.io.Serializable;
+
+public class Patient implements Serializable {
 
 //    public String patientName;
 //    public String patientAge;

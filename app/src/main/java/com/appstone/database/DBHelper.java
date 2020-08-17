@@ -70,11 +70,11 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(COL_PATIENT_WEIGHT, patient.getPatientWeight());
         contentValues.put(COL_PATIENT_APPOINTMENT_DATE, patient.getAppointmentDate());
 
-        database.update(TABLE_NAME, contentValues, "WHERE " + COL_ID + "=" + patient.getPatientID(), null);
+        database.update(TABLE_NAME, contentValues, COL_ID + "=" + patient.getPatientID(), null);
     }
 
     public void deleteDataFromDatabase(SQLiteDatabase database, Patient patient) {
-        database.delete(TABLE_NAME, "WHERE " + COL_ID + "=" + patient.getPatientID(), null);
+        database.delete(TABLE_NAME, COL_ID + "=" + patient.getPatientID(), null);
     }
 
     public ArrayList<Patient> getDataFromDatabase(SQLiteDatabase database) {

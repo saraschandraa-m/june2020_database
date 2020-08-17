@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,10 +19,17 @@ public class PatientInfoAdapter extends RecyclerView.Adapter<PatientInfoAdapter.
 
     private Context context;
     private ArrayList<Patient> patientDetails;
+    private PatientClickListener listener;
+
 
     public PatientInfoAdapter(Context context, ArrayList<Patient> patientDetails) {
         this.context = context;
         this.patientDetails = patientDetails;
+    }
+
+
+    public void setListener(PatientClickListener listener) {
+        this.listener = listener;
     }
 
 
@@ -34,12 +42,30 @@ public class PatientInfoAdapter extends RecyclerView.Adapter<PatientInfoAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull PatientInfoHolder holder, int position) {
-        Patient patient = patientDetails.get(position);
+        final Patient patient = patientDetails.get(position);
 
         holder.mTvPatientName.setText(patient.getPatientName());
         holder.mTvPatientAge.setText(patient.getPatientAge());
         holder.mTvPatientBloodGroup.setText(patient.getPatientBloodGroup());
         holder.mTvAppointmentDate.setText(patient.getAppointmentDate());
+
+        holder.mRlEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onUpdateClicked(patient);
+                }
+            }
+        });
+
+        holder.mRlDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onDeleteClicked(patient);
+                }
+            }
+        });
     }
 
     @Override
@@ -62,6 +88,9 @@ public class PatientInfoAdapter extends RecyclerView.Adapter<PatientInfoAdapter.
         private TextView mTvPatientBloodGroup;
         private TextView mTvAppointmentDate;
 
+        private RelativeLayout mRlEdit;
+        private RelativeLayout mRlDelete;
+
         public PatientInfoHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -69,8 +98,17 @@ public class PatientInfoAdapter extends RecyclerView.Adapter<PatientInfoAdapter.
             mTvPatientAge = itemView.findViewById(R.id.tv_patient_age);
             mTvPatientBloodGroup = itemView.findViewById(R.id.tv_patient_bloodgroup);
             mTvAppointmentDate = itemView.findViewById(R.id.tv_patient_appointment_date);
+
+            mRlEdit = itemView.findViewById(R.id.rl_edit);
+            mRlDelete = itemView.findViewById(R.id.rl_delete);
         }
     }
 
+
+    public interface PatientClickListener {
+        void onUpdateClicked(Patient patient);
+
+        void onDeleteClicked(Patient patient);
+    }
 
 }
